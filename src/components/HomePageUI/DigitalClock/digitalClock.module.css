@@ -1,0 +1,15 @@
+.dateAndTimeInfo {
+  position: inherit;
+  top: 75%;
+  width: fit-content;
+
+  color: rgba(67, 83, 83, 0.938);
+
+  font-size: 1.5em;
+
+  transition: linear 0.2s all;
+  cursor: none;
+}
+.dateAndTimeInfo:hover {
+  color: wheat;
+}

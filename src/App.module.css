@@ -1,0 +1,18 @@
+.mainBody {
+  height: 100vh;
+  position: relative;
+  background-color: #11121a;
+}
+
+.advancedHeading {
+  position: absolute;
+  right: 0;
+  top: 50%;
+
+  transform: rotate(90deg) translateX(-10%) translateY(-150%);
+
+  font-size: 5em;
+  color: #9c69cf;
+
+  pointer-events: none;
+}
