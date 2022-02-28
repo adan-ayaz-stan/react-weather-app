@@ -1,0 +1,14 @@
+.detailPanel {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+
+  text-align: center;
+
+  height: 40vh;
+  width: 34vw;
+
+  border: solid 1px wheat;
+
+  color: wheat;
+}

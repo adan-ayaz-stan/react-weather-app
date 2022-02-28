@@ -1,0 +1,12 @@
+.mapPanel {
+  position: absolute;
+  bottom: 3%;
+  left: 2%;
+
+  height: 34vh;
+  width: 34vw;
+
+  border: solid 1px wheat;
+
+  color: wheat;
+}

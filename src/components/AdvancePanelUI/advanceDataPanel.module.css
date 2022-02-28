@@ -1,0 +1,12 @@
+.advancedDataPanel {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+
+  height: 80vh;
+  width: 68vw;
+
+  border: solid 1px wheat;
+
+  color: wheat;
+}

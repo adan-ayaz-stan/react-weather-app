@@ -1,0 +1,26 @@
+.forecastPanel {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+
+  height: 76vh;
+  width: 30vw;
+
+  border: solid 1px wheat;
+
+  color: wheat;
+}
+.weatherCard {
+  display: flex;
+  justify-content: space-around;
+
+  border: solid 1px purple;
+}
+.box {
+  width: fit-content;
+  font-size: 10px;
+  display: flex;
+  flex-flow: column;
+
+  border: dotted 1px white;
+}
