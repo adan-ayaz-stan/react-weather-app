@@ -1,26 +1,45 @@
 .forecastPanel {
-  position: absolute;
-  top: 2%;
-  right: 2%;
+  display: flex;
+  gap: 5px;
 
-  height: 76vh;
-  width: 30vw;
+  height: fit-content;
+  width: fit-content;
 
-  border: solid 1px wheat;
+  flex-wrap: wrap;
 
   color: wheat;
 }
 .weatherCard {
-  display: flex;
-  justify-content: space-around;
-
-  border: solid 1px purple;
-}
-.box {
   width: fit-content;
-  font-size: 10px;
+  height: fit-content;
+  display: flex;
+  flex-flow: column-reverse;
+  justify-content: space-between;
+  background: linear-gradient(123deg, rgb(11, 28, 172), rgb(108, 6, 190));
+  border-radius: 8px;
+  margin-top: 18px;
+  margin-right: 8px;
+  padding: 0vw 2vw;
+  backdrop-filter: blur(10px);
+}
+.forecastBrief {
   display: flex;
   flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  border: dotted 1px white;
+.forecastImage {
+  margin-bottom: -2vw;
+}
+.forecastTemp {
+  display: flex;
+  flex-flow: column;
+  line-height: 2px;
+  align-items: center;
+  height: fit-content;
+}
+.forecastTemp > p:first-child {
+  font-size: 20px;
+  font-weight: bold;
 }

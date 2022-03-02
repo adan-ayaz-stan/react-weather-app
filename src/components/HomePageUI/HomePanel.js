@@ -53,7 +53,7 @@ function HomePanel() {
         <div className={classes.basicTextGray}>at</div>
         <div className={classes.locationText}>London, GB</div>
       </div>
-      <DigitalClock />
+      {isSlided || <DigitalClock />}
       <button
         className={classes.buttonSlider}
         onClick={

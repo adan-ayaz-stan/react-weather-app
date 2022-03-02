@@ -1,12 +1,15 @@
 .advancedDataPanel {
   position: absolute;
-  top: 10%;
-  left: 10%;
+  top: 5%;
+  left: 5%;
 
-  height: 80vh;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+
+  height: 76vh;
   width: 68vw;
-
-  border: solid 1px wheat;
+  padding: 3rem;
 
   color: wheat;
 }
