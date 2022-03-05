@@ -2,10 +2,23 @@
   text-align: center;
 
   height: 45vh;
-  width: 24vw;
+  width: 100%;
 
   background: linear-gradient(145deg, #051367, #2d31fa);
-  border-radius: 24vw;
+  border-radius: 1vw;
 
   color: wheat;
+
+  display: flex;
+  line-height: 5px;
+}
+.detailPanel > div {
+  flex: 50%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+.detailPanel img {
+  width: 8vw;
+  margin: -2vw auto;
 }

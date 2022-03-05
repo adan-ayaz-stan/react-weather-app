@@ -46,7 +46,7 @@ function HomePanel() {
 
   return (
     <div className={classes.homePanel} ref={homePanelRef}>
-      <img src={image} className={classes.logo}></img>
+      <img src={image} alt="logo" className={classes.logo}></img>
       <div className={classes.infoBox}>
         <div className={classes.basicTextGray}>It's</div>
         <div className={classes.temperatureText}>32°C</div>

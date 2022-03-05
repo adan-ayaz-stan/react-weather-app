@@ -1,5 +1,4 @@
 import HomePanel from "./components/HomePageUI/HomePanel";
-
 import React from "react";
 import classes from "./App.module.css";
 import AdvancePanel from "./components/AdvancePanelUI/AdvanceDataPanel";
@@ -9,7 +8,7 @@ export default function App() {
     <div className={classes.mainBody}>
       <HomePanel />
       <AdvancePanel />
-      <div className={classes.advancedHeading}>ADVANCED DATA</div>
+      <div className={classes.advancedHeading}>FORECAST DATA</div>
     </div>
   );
 }

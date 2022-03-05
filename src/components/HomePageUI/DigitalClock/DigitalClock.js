@@ -2,13 +2,13 @@ import { useState } from "react";
 import classes from "./digitalClock.module.css";
 
 function DigitalClock() {
-  const [evaluationState, setEvaluationState] = useState(false);
-  setInterval(() => {
-    setEvaluationState(!evaluationState);
+  const [render, setRender] = useState(false);
+
+  setTimeout(() => {
+    setRender(!render);
   }, 1000);
 
   const dateFetch = new Date();
-
   return (
     <div className={classes.dateAndTimeInfo}>
       <div className={classes.timeInfo}>{`${`${dateFetch.getHours()}`.padStart(
