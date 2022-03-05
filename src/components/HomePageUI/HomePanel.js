@@ -3,18 +3,31 @@ import image from "../../materials/svgviewer-png-output.png";
 import { useRef, useState, useEffect, useCallback } from "react";
 import DigitalClock from "./DigitalClock/DigitalClock";
 
-function HomePanel() {
-  const initializerValueForUseEffectHookWhichDoesNotChange = 1;
+function HomePanel(props) {
   const [isSlided, setSlided] = useState(false);
+  const data = props.onDataRecieve;
+  // const [isData, setData] = useState(0);
+
+  // const weatherDataFetcher = async () => {
+  //   const data = await fetch(
+  //     `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.long}&exclude=hourly,minutely&appid=ecf19eb485f5b0d22c414d31ae6a9b14`
+  //   ).then((res) => {
+  //     return res.json();
+  //   });
+  //   setData(data);
+  // };
+
+  // useEffect(() => {
+  //   getLocation();
+  //   weatherDataFetcher();
+  // }, []);
 
   const homePanelRef = useRef();
   const buttonSliderRef = useRef();
 
   useEffect(() => {
-    setTimeout(() => {
-      homePanelRef.current.style.left = "0px";
-    }, 500);
-  }, [initializerValueForUseEffectHookWhichDoesNotChange]);
+    homePanelRef.current.style.left = "0px";
+  }, []);
 
   const buttonClickHandlerNotSlidedMemoized = useCallback(() => {
     homePanelRef.current.style.left = "-74.30%";
@@ -43,15 +56,20 @@ function HomePanel() {
     buttonSliderRef.current.style.backgroundColor = "#6c2aaf";
     buttonSliderRef.current.style.outline = "none";
   }, []);
-
   return (
     <div className={classes.homePanel} ref={homePanelRef}>
       <img src={image} alt="logo" className={classes.logo}></img>
       <div className={classes.infoBox}>
-        <div className={classes.basicTextGray}>It's</div>
-        <div className={classes.temperatureText}>32°C</div>
-        <div className={classes.basicTextGray}>at</div>
-        <div className={classes.locationText}>London, GB</div>
+        {data.cod == 429 ? (
+          <div>Account suspended! Check back after an hour!</div>
+        ) : (
+          <>
+            <div className={classes.basicTextGray}>It's</div>
+            <div className={classes.temperatureText}>32°C</div>
+            <div className={classes.basicTextGray}>at</div>
+            <div className={classes.locationText}>London, GB</div>
+          </>
+        )}
       </div>
       {isSlided || <DigitalClock />}
       <button

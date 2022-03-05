@@ -4,8 +4,7 @@ import CurrentWeatherDetail from "./CurrentWeatherDetail/CurrentWeatherDetail";
 import SevenDayForecast from "./SevenDayForecast/SevenDayForecast";
 
 function AdvancePanel(props) {
-  const [isData, setData] = useState(1);
-  const [stateDataRecieve, setStateDataRecieve] = useState(false);
+  const [isData, setData] = useState(0);
   const [coords, setCoords] = useState({
     lat: 72,
     long: 32,
@@ -29,30 +28,27 @@ function AdvancePanel(props) {
   const weatherDataFetcher = async () => {
     const data = await fetch(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.long}&exclude=hourly,minutely&appid=ecf19eb485f5b0d22c414d31ae6a9b14`
-    )
-      .then((res) => {
-        setStateDataRecieve(true);
-        return res.json();
-      })
-      .catch((err) => {
-        return setStateDataRecieve(false);
-      });
+    ).then((res) => {
+      return res.json();
+    });
     setData(data);
   };
+  // useEffect(() => {
+  //   getLocation();
 
-  const weatherFetcher = async () => {
+  //   // weatherFetcher();
+  // }, [coords]);
+  useEffect(() => {
     getLocation();
     weatherDataFetcher();
-    // weatherDataFetcher();
-  };
-  useEffect(() => {
-    weatherFetcher();
-  }, [coords]);
+  }, []);
 
+  console.log("Advance Panel Running!", isData);
+  props.onDataSend(isData);
   return (
     <div className={classes.advancedDataPanel}>
-      {stateDataRecieve && <CurrentWeatherDetail dataRecieved={isData} />}
-      {stateDataRecieve && <SevenDayForecast dataRecieved={isData} />}
+      <CurrentWeatherDetail dataRecieved={isData} />
+      <SevenDayForecast dataRecieved={isData} />
     </div>
   );
 }
