@@ -13,19 +13,21 @@ function AdvancePanel(props) {
   // const [latitude, setLatitude] = useState(72);
   // const [longitude, setLongitude] = useState(32);
 
-  const getLocation = useCallback(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.watchPosition(showPosition);
-    } else {
-      console.log("Geolocation not supported or disabled.");
-    }
-  }, []);
   const showPosition = useCallback((position) => {
     setCoords({
       lat: position.coords.latitude,
       long: position.coords.longitude,
     });
   }, []);
+
+  const getLocation = useCallback(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition(showPosition);
+    } else {
+      console.log("Geolocation not supported or disabled.");
+    }
+  }, [showPosition]);
+
   const weatherDataFetcher = useCallback(async () => {
     const data = await fetch(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.long}&exclude=hourly,minutely&appid=ecf19eb485f5b0d22c414d31ae6a9b14`
@@ -33,7 +35,7 @@ function AdvancePanel(props) {
       return res.json();
     });
     setData(data);
-  }, []);
+  }, [coords]);
   // useEffect(() => {
   //   getLocation();
 
