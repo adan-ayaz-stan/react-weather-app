@@ -1,5 +1,6 @@
 import classes from "./homePanel.module.css";
 import image from "../../materials/svgviewer-png-output.png";
+import "animate.css";
 import { useRef, useState, useEffect, useCallback } from "react";
 import DigitalClock from "./DigitalClock/DigitalClock";
 
@@ -56,12 +57,22 @@ function HomePanel(props) {
     buttonSliderRef.current.style.backgroundColor = "#6c2aaf";
     buttonSliderRef.current.style.outline = "none";
   }, []);
+
   return (
     <div className={classes.homePanel} ref={homePanelRef}>
+      <div className={classes.clippy}>clippy</div>
       <img src={image} alt="logo" className={classes.logo}></img>
-      <div className={classes.infoBox}>
+      <div
+        className={`${classes.infoBox} animate__animated animate__fadeIn animate__fadeIn animate__delay-2s`}
+      >
         {data.cod == 429 ? (
-          <div>Account suspended! Check back after an hour!</div>
+          <div
+            className={
+              "animate__animated animate__fadeIn animate__fadeIn animate__delay-2s"
+            }
+          >
+            Account suspended! Check back in an hour!
+          </div>
         ) : (
           <>
             <div className={classes.basicTextGray}>It's</div>
@@ -71,7 +82,7 @@ function HomePanel(props) {
           </>
         )}
       </div>
-      {isSlided || <DigitalClock />}
+      {<DigitalClock />}
       <button
         className={classes.buttonSlider}
         onClick={

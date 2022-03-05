@@ -15,4 +15,16 @@
   color: #9c69cf;
 
   pointer-events: none;
+
+  animation: fadeInLeft 1.5s ease-out 1s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes fadeInLeft {
+  0% {
+    right: 40%;
+  }
+  100% {
+    right: 0;
+  }
 }

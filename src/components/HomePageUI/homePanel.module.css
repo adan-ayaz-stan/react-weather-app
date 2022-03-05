@@ -64,7 +64,7 @@
   cursor: pointer;
 
   transform-origin: top;
-  transition: linear 0.2s all;
+  transition: ease-out 0.2s all;
 }
 /* 
 .buttonSlider:hover {
@@ -76,4 +76,105 @@
 
 .buttonSlider > svg {
   filter: invert(100%);
+}
+
+.clippy {
+  position: absolute;
+  left: 2%;
+  top: 2%;
+  display: flex;
+  width: 7vw;
+  height: 7vw;
+  border-radius: 10vw;
+  margin: auto;
+  background-color: #6c2aaf;
+  color: transparent;
+  pointer-events: none;
+
+  clip-path: polygon(
+    100% 100%,
+    53% 43%,
+    0 100%,
+    57% 54%,
+    0 0,
+    44% 59%,
+    100% 0,
+    40% 48%
+  );
+  transform: rotate(0deg);
+  animation: clipper 5s infinite ease;
+  animation-fill-mode: backwards;
+}
+
+@keyframes clipper {
+  0% {
+    clip-path: polygon(
+      100% 100%,
+      53% 43%,
+      0 100%,
+      57% 54%,
+      0 0,
+      44% 59%,
+      100% 0,
+      40% 48%
+    );
+    transform: rotate(0deg);
+    opacity: 0;
+  }
+  25% {
+    clip-path: polygon(
+      100% 0,
+      53% 43%,
+      100% 100%,
+      57% 54%,
+      0 100%,
+      44% 59%,
+      0 0,
+      40% 48%
+    );
+    transform: rotate(60deg);
+    opacity: 0.5;
+  }
+  50% {
+    clip-path: polygon(
+      0 0,
+      53% 43%,
+      100% 0,
+      57% 54%,
+      100% 100%,
+      44% 59%,
+      0 100%,
+      40% 48%
+    );
+    transform: rotate(120deg);
+    opacity: 1;
+  }
+  75% {
+    clip-path: polygon(
+      0 100%,
+      53% 43%,
+      0 0,
+      57% 54%,
+      100% 0,
+      44% 59%,
+      100% 100%,
+      40% 48%
+    );
+    transform: rotate(180deg);
+    opacity: 0.5;
+  }
+  100% {
+    clip-path: polygon(
+      100% 100%,
+      53% 43%,
+      0 100%,
+      57% 54%,
+      0 0,
+      44% 59%,
+      100% 0,
+      40% 48%
+    );
+    transform: rotate(272deg);
+    opacity: 0;
+  }
 }

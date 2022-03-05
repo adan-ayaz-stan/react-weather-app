@@ -1,5 +1,6 @@
 import { useState } from "react";
 import classes from "./digitalClock.module.css";
+import "animate.css";
 
 function DigitalClock() {
   const [render, setRender] = useState(false);
@@ -10,7 +11,7 @@ function DigitalClock() {
 
   const dateFetch = new Date();
   return (
-    <div className={classes.dateAndTimeInfo}>
+    <div className={`${classes.dateAndTimeInfo}`}>
       <div className={classes.timeInfo}>{`${`${dateFetch.getHours()}`.padStart(
         2,
         "0"
