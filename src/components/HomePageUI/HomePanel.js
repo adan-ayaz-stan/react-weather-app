@@ -65,7 +65,7 @@ function HomePanel(props) {
       <div
         className={`${classes.infoBox} animate__animated animate__fadeIn animate__fadeIn animate__delay-2s`}
       >
-        {data.cod == 429 ? (
+        {data.cod === 429 ? (
           <div
             className={
               "animate__animated animate__fadeIn animate__fadeIn animate__delay-2s"

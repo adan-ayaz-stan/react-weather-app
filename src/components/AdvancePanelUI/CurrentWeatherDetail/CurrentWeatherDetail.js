@@ -1,4 +1,4 @@
-import 'animate.css';
+import "animate.css";
 import classes from "./currentWeatherDetail.module.css";
 
 function CurrentWeatherDetail(props) {
@@ -13,11 +13,21 @@ function CurrentWeatherDetail(props) {
     );
   }
 
-  if (props.dataRecieved.cod == 429) {
-    return <div className={'animate__animated animate__fadeIn animate__fadeIn animate__delay-2s'}>Account Suspended! Check back in an hour!</div>;
-  } else if (props.dataRecieved != 0) {
+  if (props.dataRecieved.cod === 429) {
     return (
-      <div className={`${classes.detailPanel} animate__animated animate__fadeIn animate__delay-1s`}>
+      <div
+        className={
+          "animate__animated animate__fadeIn animate__fadeIn animate__delay-2s"
+        }
+      >
+        Account Suspended! Check back in an hour!
+      </div>
+    );
+  } else if (props.dataRecieved !== 0) {
+    return (
+      <div
+        className={`${classes.detailPanel} animate__animated animate__fadeIn animate__delay-1s`}
+      >
         <div>
           <img
             src={` http://openweathermap.org/img/wn/${data.current.weather[0].icon}@2x.png`}

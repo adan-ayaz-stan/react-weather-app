@@ -41,7 +41,7 @@ function AdvancePanel(props) {
   useEffect(() => {
     getLocation();
     weatherDataFetcher();
-  }, []);
+  });
 
   console.log("Advance Panel Running!", isData);
   props.onDataSend(isData);
