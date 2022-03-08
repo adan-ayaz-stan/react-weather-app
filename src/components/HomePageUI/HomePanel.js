@@ -116,7 +116,7 @@ function HomePanel(props) {
           <>
             <div className={classes.basicTextGray}>It's</div>
             <div className={classes.temperatureText}>
-              {isData ? Math.floor(isData.current.temp - 273.15) : "32°C"}
+              {isData ? Math.floor(isData.current.temp - 273.15)+'°C' : "32°C"}
             </div>
             <div className={classes.basicTextGray}>at</div>
             <div className={classes.locationText}>
