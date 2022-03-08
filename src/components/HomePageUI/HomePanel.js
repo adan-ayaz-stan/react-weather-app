@@ -6,8 +6,47 @@ import DigitalClock from "./DigitalClock/DigitalClock";
 
 function HomePanel(props) {
   const [isSlided, setSlided] = useState(false);
-  const data = props.onDataRecieve;
-  // const [isData, setData] = useState(0);
+  const [isData, setData] = useState(0);
+  const [coords, setCoords] = useState({
+    lat: 72,
+    long: 32,
+  });
+
+  // const [latitude, setLatitude] = useState(72);
+  // const [longitude, setLongitude] = useState(32);
+
+  const showPosition = useCallback((position) => {
+    setCoords({
+      lat: position.coords.latitude,
+      long: position.coords.longitude,
+    });
+  }, []);
+
+  const getLocation = useCallback(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition(showPosition);
+    } else {
+      console.log("Geolocation not supported or disabled.");
+    }
+  }, [showPosition]);
+
+  const weatherDataFetcher = useCallback(async () => {
+    const data = await fetch(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.long}&exclude=hourly,minutely&appid=ecf19eb485f5b0d22c414d31ae6a9b14`
+    ).then((res) => {
+      return res.json();
+    });
+    setData(data);
+  }, [coords]);
+  // useEffect(() => {
+  //   getLocation();
+
+  //   // weatherFetcher();
+  // }, [coords]);
+  useEffect(() => {
+    getLocation();
+    weatherDataFetcher();
+  }, [weatherDataFetcher, getLocation]);
 
   // const weatherDataFetcher = async () => {
   //   const data = await fetch(
@@ -65,7 +104,7 @@ function HomePanel(props) {
       <div
         className={`${classes.infoBox} animate__animated animate__fadeIn animate__fadeIn animate__delay-2s`}
       >
-        {data.cod === 429 ? (
+        {isData.cod === 429 ? (
           <div
             className={
               "animate__animated animate__fadeIn animate__fadeIn animate__delay-2s"
@@ -76,9 +115,13 @@ function HomePanel(props) {
         ) : (
           <>
             <div className={classes.basicTextGray}>It's</div>
-            <div className={classes.temperatureText}>32°C</div>
+            <div className={classes.temperatureText}>
+              {isData ? Math.floor(isData.current.temp - 273.15) : "32°C"}
+            </div>
             <div className={classes.basicTextGray}>at</div>
-            <div className={classes.locationText}>London, GB</div>
+            <div className={classes.locationText}>
+              {isData ? isData.timezone : "London/GB"}
+            </div>
           </>
         )}
       </div>

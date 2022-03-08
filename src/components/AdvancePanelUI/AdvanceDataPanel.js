@@ -44,10 +44,8 @@ function AdvancePanel(props) {
   useEffect(() => {
     getLocation();
     weatherDataFetcher();
-    console.log(weatherDataFetcher());
   }, [weatherDataFetcher, getLocation]);
 
-  props.onDataSend(isData);
   return (
     <div className={classes.advancedDataPanel}>
       <CurrentWeatherDetail dataRecieved={isData} />
